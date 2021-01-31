@@ -36,7 +36,7 @@ function isGameWon(guesses, word) {
 
     }
     if (wordLength === isCorrectWord) {
-        console.log("You won! Congrats");
+        console.log("You won! Congrats! The correct word was " + word);
         return true;
     } else {
         return false;

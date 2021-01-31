@@ -18,7 +18,6 @@ function game(word, guesses) {
   const letter = question("Raad een letter: ").toLowerCase();
 
 
-
   if(checkCharacter(letter) && !guesses.includes(letter)) {
     guesses.push(letter);
   } else if(!checkCharacter(letter)) {
