@@ -5,11 +5,16 @@ function game(word, guesses) {
   if (typeof guesses !== undefined && guesses.length ) { // if array is not empty, aka game has started, only then display this.
     console.log("Dit heb je tot nu toe geraden: ", guesses);
   }
-  const displayWord = displayWordSoFar(word, guesses)
-  const checkWon = isGameWon(guesses, word)
-  const checkLost = isGameLost(word, guesses)
-  console.log(checkWon)
-  console.log(displayWord)
+  const displayWord = displayWordSoFar(word, guesses);
+
+  const checkWon = isGameWon(guesses, word);
+  if (checkWon) {return}
+
+  const checkLost = isGameLost(word, guesses);
+  if (checkLost) {return}
+
+  console.log(displayWord);
+
   const letter = question("Raad een letter: ").toLowerCase();
 
 
@@ -17,7 +22,7 @@ function game(word, guesses) {
   if(checkCharacter(letter) && !guesses.includes(letter)) {
     guesses.push(letter);
   } else if(!checkCharacter(letter)) {
-    console.log("Je mag maar met 1 letter raden")
+    console.log("Je mag maar met 1 letter raden");
   }
 
   // voeg de geraden letter toe aan de array met guesses

@@ -29,30 +29,33 @@ function isGameWon(guesses, word) {
 
     for (let i = 0; i < guesses.length; i++) {
         if (word.includes(guesses[i])) {
-
             let countDuplicatedCharacters = (word.match(new RegExp(guesses[i], "g")) || []).length;
             isCorrectWord = isCorrectWord + countDuplicatedCharacters;
-            console.log(isCorrectWord)
-            console.log(wordLength)
         }
 
 
     }
     if (wordLength === isCorrectWord) {
-        return true
+        console.log("You won! Congrats");
+        return true;
     } else {
         return false;
     }
 }
 
-function removeWrongLetters(guesses, ignoreWrongLetters) {
-
-
-}
-
 
 function isGameLost(word, guesses) {
-    if (guesses.length >= 7) {
+    let wrongGuesses = 0;
+    for (let i = 0; i < guesses.length; i++) {
+        if (word.includes(guesses[i])) {
+          // do nothing this is the right answer
+        } else if (!word.includes(guesses[i])) {
+            wrongGuesses++;
+        }
+    }
+    console.log("Wrong guesses: " + wrongGuesses)
+    if (wrongGuesses >= 7) {
+        console.log("You lost...");
         return true;
     } else {
         return false;
